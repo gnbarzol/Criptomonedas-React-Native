@@ -1,15 +1,28 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import {Picker} from '@react-native-community/picker';
+import axios from 'axios';
 
 const Formulario = () => {
   const [moneda, setMoneda] = useState('');
   const [criptomoneda, setCriptoMoneda] = useState('');
+  const [dataCripto, setDataCripto] = useState([]);
+
+  useEffect(() => {
+    const consultarAPI = async () => {
+      const URL =
+        'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD';
+      const respuesta = await axios.get(URL);
+      setDataCripto(respuesta.data.Data);
+      console.log(dataCripto);
+    };
+    consultarAPI();
+  }, []);
 
   return (
     <>
       <View>
-        <Text style={styles.label}>Moneda</Text>
+        <Text style={styles.label}>Moneda: {moneda}</Text>
         <Picker
           selectedValue={moneda}
           onValueChange={(itemValue, itemIndex) => setMoneda(itemValue)}>
