@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, View, Image} from 'react-native';
 import Header from './components/Header';
 import Formulario from './components/Formulario';
 
 const App = () => {
+  const [moneda, setMoneda] = useState('');
+  const [criptomoneda, setCriptoMoneda] = useState('');
+  const [cotizar, setCotizar] = useState(false);
+
   return (
     <>
       <View>
@@ -13,7 +17,13 @@ const App = () => {
           source={require('../assets/img/cryptomonedas.png')}
         />
         <View style={styles.contenido}>
-          <Formulario />
+          <Formulario
+            moneda={moneda}
+            setMoneda={setMoneda}
+            criptomoneda={criptomoneda}
+            setCriptoMoneda={setCriptoMoneda}
+            setCotizar={setCotizar}
+          />
         </View>
       </View>
     </>
@@ -24,7 +34,7 @@ const styles = StyleSheet.create({
   logo: {
     width: '100%',
     marginHorizontal: '2.5%',
-    height: 150,
+    height: '20%',
     opacity: 0.9,
   },
   contenido: {
