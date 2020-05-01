@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View, Image} from 'react-native';
 import Header from './components/Header';
 
 const App = () => {
@@ -7,6 +7,10 @@ const App = () => {
     <>
       <View>
         <Header />
+        <Image
+          style={styles.logo}
+          source={require('../assets/img/cryptomonedas.png')}
+        />
       </View>
     </>
   );
@@ -14,8 +18,10 @@ const App = () => {
 
 const styles = StyleSheet.create({
   logo: {
-    flex: 1,
-    margin: 50,
+    width: '100%',
+    marginHorizontal: '2.5%',
+    height: 150,
+    opacity: 0.9,
   },
 });
 
