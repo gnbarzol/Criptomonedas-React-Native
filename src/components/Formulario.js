@@ -27,7 +27,7 @@ const Formulario = props => {
   };
 
   const mostrarAlerta = () => {
-    Alert.alert('Error', 'Selecciona al menos una moneda y una criptomoneda', [
+    Alert.alert('Aviso', 'Selecciona al menos una moneda y una criptomoneda', [
       {text: 'OK'},
     ]);
   };
@@ -51,6 +51,7 @@ const Formulario = props => {
           selectedValue={criptomoneda}
           onValueChange={itemValue => setCriptoMoneda(itemValue)}
           itemStyle={{height: 110}}>
+          <Picker.Item label="- Seleccione -" value="" />
           {dataCripto.map(data => (
             <Picker.Item
               label={data.CoinInfo.FullName}
@@ -82,7 +83,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#27496d',
     padding: 10,
     borderRadius: 15,
-    marginVertical: 40,
+    marginTop: 40,
+    marginBottom: 20,
   },
   txtBtn: {
     color: 'white',
